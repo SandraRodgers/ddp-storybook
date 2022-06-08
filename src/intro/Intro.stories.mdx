@@ -3,3 +3,48 @@ import { Meta } from "@storybook/addon-docs";
 <Meta title="Intro" />
 
 # Introduction
+
+This Storybook is at its very beginning stages. Here is the current process we are undertaking:
+
+**Component Identification**
+
+Looking through Figma designs to identify components. The Figma designs to use are:
+
+[Deepgram-Design-Library](https://www.figma.com/file/84IFUuStdqz0sLT8cndYkY/OLD---Deepgram-Design-Library?node-id=0%3A1)
+
+- These are in the process of being updated (and relevant designs moved to the new Figma [here](https://www.figma.com/file/rtbp2Inv1JV0WZ5bLVYOAY/Design-Library?node-id=0%3A1)). These represent the design library for Deepgram. They should be used for general component designs.
+
+[Marketing Site Designs](https://www.figma.com/file/zGTweN9BxomiX99AnBuqmB/DG-website-3.0-wireframes)
+
+- The new marketing site designs use many of the general components (such as the primary button), but they may include variants. We can identify variants of previous components and we can find new components to build
+
+Other DDP Designs
+
+- To some extent we can use [DDP V1](https://www.figma.com/file/GqyEDMD5LGMuVTRUH6ySMV/Dev-Platform) designs, but ideally we will use the new project designs to inform our building of the component library
+
+**Add Stories to Storybook for each Component**
+
+As we identify components, we should create a story for them in the storybook repo. We can use a template for the story and for the Vue component for the time being, before we actually build the component and identify props/styles/variants/states.
+
+**Add Design Examples**
+
+We can also link to Figma designs in the story. Here is an example (from the Primary Button Component story) for how to do this:
+
+```js
+Primary.parameters = {
+  design: [
+    {
+      name: "General",
+      type: "figma",
+      url: "https://www.figma.com/file/84IFUuStdqz0sLT8cndYkY/Deepgram-Design-Library?node-id=1409%3A53",
+    },
+    {
+      name: "Marketing Primary Button",
+      type: "figma",
+      url: "https://www.figma.com/file/zGTweN9BxomiX99AnBuqmB/DG-website-3.0-wireframes?node-id=341%3A7878",
+    },
+  ],
+};
+```
+
+This will create a tab in the story called "Design". If you click on the tab you will see tabs for the two different design links - General and Marketing Primary Button.
