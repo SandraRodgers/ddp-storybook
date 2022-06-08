@@ -1,6 +1,6 @@
 require("../../styles/main.css");
 
-import Blank from "./Blank.vue";
+import Blank from "../../components/Blank";
 
 export default {
   title: "Components/Feedback/Blank",

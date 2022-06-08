@@ -1,6 +1,6 @@
 require("../../styles/main.css");
 import { withDesign } from "storybook-addon-designs";
-import DGButton from "./DGButton.vue";
+import DGButton from "../../components/DGButton";
 
 export default {
   title: "Components/Inputs/Button",
@@ -23,10 +23,18 @@ Primary.args = {
 };
 
 Primary.parameters = {
-  design: {
-    type: "figma",
-    url: "https://www.figma.com/file/84IFUuStdqz0sLT8cndYkY/Deepgram-Design-Library?node-id=1409%3A53",
-  },
+  design: [
+    {
+      name: "General",
+      type: "figma",
+      url: "https://www.figma.com/file/84IFUuStdqz0sLT8cndYkY/Deepgram-Design-Library?node-id=1409%3A53",
+    },
+    {
+      name: "Marketing Primary Button",
+      type: "figma",
+      url: "https://www.figma.com/file/zGTweN9BxomiX99AnBuqmB/DG-website-3.0-wireframes?node-id=341%3A7878",
+    },
+  ],
 };
 
 export const Secondary = Template.bind({});
@@ -36,10 +44,14 @@ Secondary.args = {
 };
 
 Secondary.parameters = {
-  design: {
-    type: "figma",
-    url: "",
-  },
+  design: [
+    // No Secondary Button in General Design System Figma Designs
+    {
+      name: "Marketing Secondary Button",
+      type: "figma",
+      url: "https://www.figma.com/file/zGTweN9BxomiX99AnBuqmB/DG-website-3.0-wireframes?node-id=341%3A7879",
+    },
+  ],
 };
 
 export const Ghost = Template.bind({});

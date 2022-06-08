@@ -2,7 +2,7 @@
 
 <script>
 export default {
-  name: "Blank",
+  name: "QuickActionButton",
   props: {
     label: {
       type: String,

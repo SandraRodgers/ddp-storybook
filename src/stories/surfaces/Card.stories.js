@@ -1,21 +1,21 @@
 require("../../styles/main.css");
 
-import Blank from "./Blank.vue";
+import Card from "../../components/Card";
 
 export default {
-  title: "Components/Navigation/Blank",
-  component: Blank,
+  title: "Components/Feedback/Card",
+  component: Card,
   argTypes: {
     label: { control: "text" },
   },
 };
 
 const Template = (args) => ({
-  components: { Blank },
+  components: { Card },
   setup() {
     return { args };
   },
-  template: '<Blank v-bind="args" />',
+  template: '<Card v-bind="args" />',
 });
 
 export const Primary = Template.bind({});
