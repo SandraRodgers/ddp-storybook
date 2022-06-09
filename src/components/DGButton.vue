@@ -3,19 +3,20 @@
     :is="tag"
     :href="href && href.length > 0 ? href : null"
     class="dg-button"
-    :class="[variant, isDark]"
+    :class="[quickActionClass, variant, isDark]"
     :type="!href && type"
     :target="href && target ? target : null"
     @click="onClick"
   >
-    <div v-if="icon === 'front'" :class="iconClass">
+    <div v-if="iconSide === 'left'" :class="iconClass">
       <slot></slot> <span>{{ label }}</span>
     </div>
-    <div v-if="icon === 'back'" :class="iconClass">
+    <div v-if="iconSide === 'right'" :class="iconClass">
       <span>{{ label }}</span
       ><slot></slot>
     </div>
-    <div v-if="!icon">
+    <div v-if="isQuickAction" class="icon-qab">{{ label }}</div>
+    <div v-else>
       {{ label }}
     </div>
   </component>
@@ -65,12 +66,16 @@ export default {
       },
     },
     // Default is no icon. Can use 'left' or 'right' icon.
-    icon: {
+    iconSide: {
       type: String,
       default: "",
       validator: (value) => {
         return ["", "left", "right"].includes(value.toLowerCase());
       },
+    },
+    isQuickAction: {
+      type: Boolean,
+      default: false,
     },
   },
   emits: ["click"],
@@ -84,10 +89,15 @@ export default {
     const tag = computed(() => {
       return props.href ? "a" : "button";
     });
+
+    const quickActionClass = computed(() => {
+      return props.isQuickAction ? "qab" : "standard";
+    });
+
     const iconClass = computed(() => {
-      if (this.icon === "left") {
+      if (props.icon === "left") {
         return "icon-left";
-      } else if (this.icon === "right") {
+      } else if (props.icon === "right") {
         return "icon-right";
       } else {
         return "";
@@ -106,6 +116,7 @@ export default {
       tag,
       iconClass,
       isDark,
+      quickActionClass,
     };
   },
 };
@@ -118,12 +129,22 @@ export default {
   @apply text-base;
   @apply leading-4;
   @apply outline-none;
-  height: 42px;
-  @apply py-2 px-6;
+
   @apply whitespace-nowrap;
   @apply bg-meadow;
   @apply text-darkCharcoal;
-  width: fit-content;
+
+  &.standard {
+    @apply py-2 px-6;
+    height: 42px;
+    width: fit-content;
+  }
+
+  &.qab {
+    width: fit-content;
+    @apply rounded-full;
+  }
+
   &:hover {
     background-color: #5cf0bb;
     @apply text-darkCharcoal;
@@ -233,6 +254,11 @@ export default {
   .icon-left,
   .icon-right {
     @apply flex items-center space-x-1;
+  }
+  .icon-qab {
+    @apply flex justify-center items-center;
+    @apply w-10 h-10;
+    @apply rounded-full;
   }
 }
 </style>

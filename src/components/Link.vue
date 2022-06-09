@@ -1,8 +1,8 @@
-<template></template>
+<template>Link</template>
 
 <script>
 export default {
-  name: "QuickActionButton",
+  name: "Link",
   props: {
     label: {
       type: String,
