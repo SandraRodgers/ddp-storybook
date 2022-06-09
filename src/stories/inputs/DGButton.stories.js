@@ -5,6 +5,12 @@ import DGButton from "../../components/DGButton";
 export default {
   title: "Components/Inputs/Button",
   component: DGButton,
+  argTypes: {
+    variant: {
+      options: ["primary", "secondary", "ghost", "ghost-secondary"],
+      control: "select",
+    },
+  },
   decorators: [withDesign],
 };
 
@@ -20,6 +26,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   label: "Primary Button",
   variant: "",
+  href: "",
 };
 
 Primary.parameters = {
@@ -33,6 +40,27 @@ Primary.parameters = {
       name: "Marketing Primary Button",
       type: "figma",
       url: "https://www.figma.com/file/zGTweN9BxomiX99AnBuqmB/DG-website-3.0-wireframes?node-id=341%3A7878",
+    },
+  ],
+};
+
+export const QuickActionButtonPrimary = Template.bind({});
+QuickActionButtonPrimary.args = {
+  label: "button",
+  isQuickAction: "true",
+};
+
+QuickActionButtonPrimary.parameters = {
+  design: [
+    {
+      name: "General",
+      type: "figma",
+      url: "https://www.figma.com/file/84IFUuStdqz0sLT8cndYkY/OLD---Deepgram-Design-Library?node-id=1845%3A77",
+    },
+    {
+      name: "Marketing QuickActionButtonPrimary",
+      type: "figma",
+      url: "https://www.figma.com/file/zGTweN9BxomiX99AnBuqmB/DG-website-3.0-wireframes?node-id=252%3A3644",
     },
   ],
 };
